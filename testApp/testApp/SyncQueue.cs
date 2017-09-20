@@ -4,7 +4,7 @@ using System.Threading;
 using System.Linq;
 
 
-public class SyncQueue<T> 
+public class SyncQueue<T>:IDisposable
 {
     private Queue<T> queue=new Queue<T>();
     EventWaitHandle hasSomething = new EventWaitHandle(false,EventResetMode.ManualReset);
@@ -44,5 +44,9 @@ public class SyncQueue<T>
             }
         }
         return res;
+    }    
+    public void Dispose()
+    {
+        hasSomething.Dispose();
     }
 }

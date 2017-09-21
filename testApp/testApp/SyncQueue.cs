@@ -33,7 +33,7 @@ public class SyncQueue<T>:IDisposable
                 {
                     res = queue.Dequeue();
                     //Console.WriteLine($"<={queue.Count()}");
-                    if (queue.Any())
+                    if (!queue.Any())
                         hasSomething.Reset();//говорим что взяли последнее и ловить нечего 
                     succes = true;
                 }
